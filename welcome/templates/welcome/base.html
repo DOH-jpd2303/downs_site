@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/hi.css' %}">
+    <title>{% block title %}Jon Downs's Site{% endblock %}</title>
+</head>
+<body>
+  <div class="sidebar" id ="sidebar">
+    {% block sidebar %}
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/">Projects</a></li>
+      <li><a href="/">Blog</a></li>
+    </ul>
+    {% endblock %}
+  </div>
+
+  <div id="content" class="main">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
