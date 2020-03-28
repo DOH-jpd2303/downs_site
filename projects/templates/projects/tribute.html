@@ -1,0 +1,101 @@
+{% extends "welcome/base.html" %}
+{% block title %}Projects{% endblock %}
+{%block content %}
+<style>
+  .main {
+    display: block;
+    text-align: center;
+  }
+  .image {
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid;
+  }
+  .tribute-info {
+    text-align: left;
+  }
+  h1, h2, h3, h4, h5, h6, p {
+    font-family: 'Inter';
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+  #title {
+    font-weight: bold;
+    text-align: center;
+  }
+  #sub-title {
+    text-align: center;
+  }
+  #img-div {
+    padding: 2% 0% 1% 0%;
+    background: tan;
+    text-align: center;
+  }
+  #tribute-info {
+    margin: 0% 30% 0% 30%;
+  }
+
+</style>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Tribute Page</title>
+      <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+    </head>
+    <main>
+    <body id="main">
+      <h1 id="title">Joe Exotic</h1>
+      <h2 id="sub-title">The Tiger King</h2>
+      <div img id="img-div">
+        <img id="image" class="image" src="https://www.rollingstone.com/wp-content/uploads/2020/03/JoeExotic-1.jpg?resize=1800,1200&w=450">
+        <p id="img-caption">Joe Exotic, respector of no persons</p>
+      </div>
+      <div id="tribute-info" class="tribute-info">
+<p>
+  An amazing confluence of circumstances brought us here today. As I write, the
+  <a href="https://www.nytimes.com/news-event/coronavirus", target="_blank">
+    coronavirus
+    </a> is sweeping through the country, bringing life to a stand-still. As I
+    work from home and eat through the canned goods and bread we bought
+    in a panic, learning HTML has become a new pastime. After doing some initial
+    lessons, I learned about my first project: to create a tribute page.
+  </p>
+<p>
+    Typically, I struggle with identified the men and women I aspire to be like.
+    Those who deserve our respect as individuals, as a country. That was not
+    the case this time. I knew immediately who I would give this honor.
+</p>
+<p>Joe Exotic.</p>
+<p>
+    Joseph Moldonado-Passage is a man living near Wynnewood, Oklahoma. Coincidentally,
+    this is less than a three-hour drive from my own hometown.
+    <a href="https://en.wikipedia.org/wiki/Joseph_Maldonado-Passage",
+      target="_blank", id="tribute-link">
+      Joe's Bio
+    </a>
+    speaks of a wild and vivid history. Joe continuously skirted law enforcement,
+    at least for a time.
+  </p>
+  <p>
+    Alright, I cannot continue to pretend that Joe is a role model. He has been
+    convicted of
+    <a href="https://www.nytimes.com/2020/01/22/us/joe-exotic-sentence-oklahoma.html"
+      target="_blank" id="convictions">
+      murder-for-hire and various animal welfare charges
+    </a>. But, I refuse to turn this simple project into a lecture about the dangers of
+    minimizing such atrocious behavior in the name of entertainment. We
+    need this right now. We need something trashy, something off the wall. Something
+    that draws us in while making no sense whatsoever. We have chosen Joe Exotic
+    as the first true meme of the crisis. So be it.
+  </p>
+  <p>
+    So enjoy your 15 minutes, Joe Exotic. But let's stay in jail and think about
+    what we did for a little longer, okay?
+  </p>
+      </div>
+    </body>
+  </html>
+{% endblock %}

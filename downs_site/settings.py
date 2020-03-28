@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap_ui',
 
     #Own
     'welcome',
-    'blog'
+    'blog',
+    'projects'
 ]
 
 MIDDLEWARE = [
@@ -118,6 +120,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+DJANGO_BOOTSTRAP_UI_THEME = 'bootswatch-paper'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/

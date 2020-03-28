@@ -17,9 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from welcome import views as welcome_views
 from blog import views as blog_views
+from projects import views as projects_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', welcome_views.home_view, name='home'),
-    path('blog/', blog_views.blog_view, name="blog")
+    path('blog/', blog_views.blog_view, name="blog"),
+    path('projects/', projects_views.projects_main_view, name="projects"),
+    path('projects/tribute', projects_views.projects_tribute_page, name="tribute"),
+    path('projects/survey', projects_views.projects_survey_page, name="survey")
 ]

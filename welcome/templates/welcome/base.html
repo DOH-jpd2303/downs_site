@@ -4,15 +4,17 @@
 <head>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/hi.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
     <title>{% block title %}Jon Downs's Site{% endblock %}</title>
 </head>
 <body>
-  <div class="sidebar" id ="sidebar">
-    {% block sidebar %}
+  <div class="sidenav" id ="sidenav">
+    {% block sidenav %}
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/">Projects</a></li>
+      <li><a href="/projects">Projects</a></li>
       <li><a href="/">Blog</a></li>
     </ul>
     {% endblock %}
@@ -21,5 +23,8 @@
   <div id="content" class="main">
     {% block content %}{% endblock %}
   </div>
+  {% block body-content %}
+
+  {% endblock %}
 </body>
 </html>

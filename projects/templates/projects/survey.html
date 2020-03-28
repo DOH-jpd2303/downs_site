@@ -1,0 +1,66 @@
+{% extends "welcome/base.html" %}
+{% block title %}Projects{% endblock %}
+{%block content %}
+<style>
+
+</style>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Survey Form</title>
+      <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+    </head>
+    <h1 id="title">Survey Form</h1>
+    <p id="description">Tell us a little more about yourself.</p>
+    <form id="survey-form">
+      <label for="name" id="name-label">Name:</label><br>
+      <input type="text" id="name" name="name" placeholder="John Doe" required><br><br>
+
+      <label for="email" id="email-label">Email:</label><br>
+      <input type="email" id="email" name="email" placeholder="me@mysite.com" required><br><br>
+
+      <label for="number" id="number-label">Number:</label><br>
+      <input type="number" id="number"
+        name="number" min="10000000000" max="99999999999" placeholder="15555555555"><br><br>
+      <fieldset id="dropdown-field">
+        <label for="dropdown" id="dropdown-label">How did you find this site?</label>
+        <br>
+        <select id="dropdown">
+          <option value="github">Github</option>
+          <option value="facebook">Facebook</option>
+          <option value="other-site">Another site</option>
+          <option value="friend">A friend</option>
+          <option value="other">Somewhere else</option>
+        </select>
+      </fieldset>
+        <br>
+
+        <fieldset id="radio-set">
+          <label for="radio-set" id="radio-label">What are you interested in?</label>
+          <br>
+          <input type="radio" name="radio-set" id="browsing" value="browsing">
+          <label for="browsing">Just browsing</label>
+          <br>
+
+          <input type="radio" name="radio-set" id="work" value="work">
+          <label for="work">I would like to work with you</label>
+        </fieldset>
+        <br>
+
+        <fieldset id="checkbox-set">
+          <input type="checkbox" id="email" name="email" value="email">
+          <label for="email">Email</label>
+
+          <input type="checkbox" id="phone" name="phone" value="phone">
+          <label for="phone">Phone</label>
+        </fieldset>
+
+        <textarea id="comments"></textarea>
+        <br><br>
+
+      <input type="submit" value="Submit" id="submit">
+    </form>
+
+
+  </html>
+{% endblock %}
