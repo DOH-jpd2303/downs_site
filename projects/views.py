@@ -11,3 +11,6 @@ def projects_tribute_page(request):
 
 def projects_survey_page(request):
     return render(request, "projects/survey.html")
+
+def projects_product_page(request):
+    return render(request, "projects/product.html")
