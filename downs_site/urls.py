@@ -26,5 +26,6 @@ urlpatterns = [
     path('projects/', projects_views.projects_main_view, name="projects"),
     path('projects/tribute', projects_views.projects_tribute_page, name="tribute"),
     path('projects/survey', projects_views.projects_survey_page, name="survey"),
-    path('projects/product', projects_views.projects_product_page, name="product")
+    path('projects/product', projects_views.projects_product_page, name="product"),
+    path('projects/techdoc', projects_views.projects_techdoc_page, name="techdoc")
 ]
