@@ -11,8 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/ghs_tech_doc.css' %}">
   </head>
+  <nav id="navbar">
+    <header>GHS Model</header>
+    <a href="#title">Title</a>
+    <a href="#introduction">Introduction</a>
+    <a href="#ghs_scoring">GHS Scoring and Level of Care Assignment</a>
+  </nav>
   <main id="main-doc">
-    <section class="main-section title">
+    <section class="main-section" id="title">
       <h1>Mental Health Generic Health Stratification</h1>
       <p>Business Rules and Technical Reference for New Model</p>
       <p>Jon Downs, Generic Organization (GO)</p>
@@ -21,7 +27,7 @@
         distinguish this from the original work.
       </p>
     </section>
-    <section class="main-section introduction">
+    <section class="main-section" id="introduction">
       <header>Introduction</header>
     <p>
       Generic Organization (GO) offers mental health (MH) benefits to eligible
@@ -77,9 +83,9 @@
     </ul>
     <!-- TABLE 1 -->
     <section class="main-section" id="t1">
-      <h3><strong>Table 1</strong>.
+      <header><strong>Table 1</strong>.
         Adult GHS sub-scores and stratum assignments
-      </h3>
+      </header>
       <div class="t1_head_row1 table_head_container">
         <div class="attribute">Sub-score Categories</div>
         <div class="attribute">Out score levels: Range of values
@@ -131,9 +137,9 @@
 
     <!-- TABLE 2 -->
     <section id="t2" class="main-section">
-      <h3><strong>Table 2</strong>.
+      <header><strong>Table 2</strong>.
         Child GHS sub-scores and stratum assignments
-      </h3>
+      </header>
       <div class="t2_head_row1 table_head_container">
         <div class="attribute t2_head">Sub-score Categories</div>
         <div class="attribute t2_head">Out score levels: Range of values
@@ -190,9 +196,9 @@
       inputs are determined for each client, see Appendix A.
     </p>
     <section id="t3" class="main-section">
-      <h3><strong>Table 3</strong>.
+      <header><strong>Table 3</strong>.
         Example GHS score calculation for an adult.
-      </h3>
+      </header>
       <div class="t3_head table_head_container">
         <div class="attribute">Sub-score category</div>
         <div class="attribute">Client results</div>
@@ -260,8 +266,8 @@
       will be described in more detail below.
     </p>
     <section id="t4" class="main-section">
-      <h3><strong>Table 4</strong>. Service hours expected and base payment
-        amounts per 30 days of active benefit.</h3>
+      <header><strong>Table 4</strong>. Service hours expected and base payment
+        amounts per 30 days of active benefit.</header>
       <div class="table_head_container t4_head">
         <div class="attribute">Benefit type</div>
         <div class="attribute">Service Hours Expected</div>
@@ -288,7 +294,7 @@
       </div>
     </section>
     <section class="main-section" id="SDA">
-    <h2>Calculation of SDA</h2>
+    <header>Calculation of SDA</header>
     <p>
       Active benefits will receive a service delivery adherence (SDA)
       calculation once each quarter, if possible. SDA percentages are the
@@ -296,7 +302,7 @@
       amount requested for all clients at a certain benefit level during a
       period. Or:
     </p>
-    <p>[TO ADD: MATH EQUATIONS IN MATHJAX (can't use for FCC project)]</p>
+    <code>sda = prorated_monthly_hours/number_hours_expected</code>
     <p>Where:</p>
     <p>[ADD MATH]</p>
     <p>
@@ -344,8 +350,6 @@
       </ul>
     </p>
   </section>
-
-
   </main>
 </html>
 {% endblock %}
