@@ -31,12 +31,3 @@
 .main {
   margin-left: 80px; /* Same as the width of the sidebar */
 }
-.main h1, h2, h3, h4, h5, p, a, header {
-  padding-left: 1vw;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}

@@ -1,0 +1,351 @@
+
+{% extends "welcome/base.html" %}
+{% load static %}
+{% block title %}GHS: Technical Documentation{% endblock %}
+{%block content %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GHS: Technical Documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/ghs_tech_doc.css' %}">
+  </head>
+  <main id="main-doc">
+    <section class="main-section title">
+      <h1>Mental Health Generic Health Stratification</h1>
+      <p>Business Rules and Technical Reference for New Model</p>
+      <p>Jon Downs, Generic Organization (GO)</p>
+      <p>This is an exercise for freeCodeCamp.org. The text has been adapted
+        from a work project. Key parts have been purposefully changed to
+        distinguish this from the original work.
+      </p>
+    </section>
+    <section class="main-section introduction">
+      <header>Introduction</header>
+    <p>
+      Generic Organization (GO) offers mental health (MH) benefits to eligible
+      clients. Each benefit is placed into a level of care. This tier determines
+      both the amount of services expected from providers and the total payment
+      that will be delivered. Currently, providers request a tier level for
+      their clients at the beginning of the benefit. Typically, a client
+      maintains the same tier for the entire length of the authorization.
+    </p>
+    <p>
+      In 2019, work began to change the way clients were assigned to levels of
+      care. Instead of providers requesting tiers of service at the start of an
+      authorization, tiers will be assigned quarterly based on a scoring system
+      maintained by GO. This scoring system is called the Generic Health
+      Stratification (GHS) model.
+    </p>
+    <p>
+      Payment will also change in the new model. Each quarter, clients will be
+      evaluated for hours of care received versus hours of care expected based
+      on their tier level. This comparison of expected versus actual services
+      delivered is called Service Delivery Adherence (SDA). Future payments will
+      be adjusted based on a client’s recent SDA performance at a provider
+      agency.
+    </p>
+    <p>
+      This document describes the methodology for GHS model and SDA payment
+      adjustment. This document will also describe what to expect during the
+      transition period, including what resources will be available to providers.
+      Descriptions of the <a href="#ghs_scoring">GHS scoring model</a>,
+      Service Delivery Adherence (SDA) process and other changes will be
+      described in detail. Appendices are also provided, including a
+      technical reference for how model inputs were
+      determined; examples of SDA calculations; a description of fields in the
+      preliminary files distributed to providers; and a summary of changes to
+      the GHS model, process, and files delivered to providers.
+    </p>
+  </section>
+  <section class="main-section" id="ghs_scoring">
+    <header>GHS Scoring and Level of Care Assignment</header>
+    <h2>Determining a client’s GHS score</h2>
+    <p>
+      Each authorization will be assigned a GHS score quarterly. Continuing
+      benefits will receive GHS scores on the first day of each quarter. New
+      benefits will receive GHS scores within a week of receiving all
+      necessary information from the requesting party.
+    </p>
+    <p>
+      There are two different scoring systems based on the age of the client:
+    </p>
+    <ul>
+      <li>MH scoring system for adults (see <a href="#t1">Table 1</a>)</li>
+      <li>MH scoring system for children (see <a href="#t2">Table 2</a>)</li>
+    </ul>
+    <!-- TABLE 1 -->
+    <section class="main-section" id="t1">
+      <h3><strong>Table 1</strong>.
+        Adult GHS sub-scores and stratum assignments
+      </h3>
+      <div class="t1_head_row1 table_head_container">
+        <div class="attribute">Sub-score Categories</div>
+        <div class="attribute">Out score levels: Range of values
+          (points assigned)</div>
+      </div>
+      <div class="t1_head_row2 table_head_container">
+        <div class="attribute"></div>
+        <div class="attribute">No score</div>
+        <div class="attribute">Low</div>
+        <div class="attribute">Medium</div>
+        <div class="attribute">High</div>
+      </div>
+      <div class="t1_body table_body_container">
+        <div class="attribute">Emergency department (ED) visits</div>
+        <div class="attribute">No visits (0 points)</div>
+        <div class="attribute">1-2 visits (1 point)</div>
+        <div class="attribute">3-5 visits (5 points)</div>
+        <div class="attribute">6+ visits (11 points)</div>
+      </div>
+      <div class="t1_body table_body_container">
+        <div class="attribute">Housing stability</div>
+        <div class="attribute">Stable housing (0 points)</div>
+        <div class="attribute">--</div>
+        <div class="attribute">--</div>
+        <div class="attribute">Unstable housing (5 points)</div>
+      </div>
+      <div class="t1_body table_body_container">
+        <div class="attribute">Incarcerations</div>
+        <div class="attribute">None (0 points)</div>
+        <div class="attribute">1-2 (4 point)</div>
+        <div class="attribute">3-4 (6 points)</div>
+        <div class="attribute">5+ (9 points)</div>
+      </div>
+      <div class="t1_body table_body_container">
+        <div class="attribute">Chronic conditions</div>
+        <div class="attribute">None (0 points)</div>
+        <div class="attribute">1-2 (1 point)</div>
+        <div class="attribute">3-4 (3 points)</div>
+        <div class="attribute">5+ (5 points)</div>
+      </div>
+      <div class="t1_body table_body_container">
+        <div class="attribute">Clinician assessment</div>
+        <div class="attribute">Mild risk (0 points)</div>
+        <div class="attribute">Low risk (2 points)</div>
+        <div class="attribute">Medium risk (4 points)</div>
+        <div class="attribute">High risk (8 points)</div>
+      </div>
+    </section>
+
+    <!-- TABLE 2 -->
+    <section id="t2" class="main-section">
+      <h3><strong>Table 2</strong>.
+        Child GHS sub-scores and stratum assignments
+      </h3>
+      <div class="t2_head_row1 table_head_container">
+        <div class="attribute t2_head">Sub-score Categories</div>
+        <div class="attribute t2_head">Out score levels: Range of values
+          (points assigned)</div>
+      </div>
+      <div class="t2_head_row2 table_head_container">
+        <div class="attribute"></div>
+        <div class="attribute">No score</div>
+        <div class="attribute">Low</div>
+        <div class="attribute">Medium</div>
+        <div class="attribute">High</div>
+      </div>
+      <div class="t2_body table_body_container">
+        <div class="attribute">Emergency department (ED) visits</div>
+        <div class="attribute">No visits (0 points)</div>
+        <div class="attribute">1-2 visits (1 point)</div>
+        <div class="attribute">3-5 visits (5 points)</div>
+        <div class="attribute">6+ visits (11 points)</div>
+      </div>
+      <div class="t2_body table_body_container">
+        <div class="attribute">Housing stability</div>
+        <div class="attribute">Stable housing (0 points)</div>
+        <div class="attribute">--</div>
+        <div class="attribute">--</div>
+        <div class="attribute">Unstable housing (5 points)</div>
+      </div>
+      <div class="t2_body table_body_container">
+        <div class="attribute">School attendance</div>
+        <div class="attribute">No truancy reported (0 points)</div>
+        <div class="attribute">--</div>
+        <div class="attribute">--</div>
+        <div class="attribute">Truancy reported (4 points)</div>
+      </div>
+      <div class="t2_body table_body_container">
+        <div class="attribute">Clinician assessment</div>
+        <div class="attribute">Mild risk (0 points)</div>
+        <div class="attribute">Low risk (2 points)</div>
+        <div class="attribute">Medium risk (4 points)</div>
+        <div class="attribute">High risk (8 points)</div>
+      </div>
+    </section>
+    <p>
+      Each scoring system looks at a series of indicators of client need.
+      For each indicator, points will be assigned based on a client’s individual
+      data. The points from each indicator will be added to produce a total score
+      for the client.
+    </p>
+    <p>
+      An example of the calculation for an adult MH benefit is given in
+      <a href="#t3">Table 3</a>.
+      In this example, the client received a score of 14. This score was driven
+      mostly by the results of their assessment, unstable housing, and  ED
+      visits in the past year. For more information about how these GHS model
+      inputs are determined for each client, see Appendix A.
+    </p>
+    <section id="t3" class="main-section">
+      <h3><strong>Table 3</strong>.
+        Example GHS score calculation for an adult.
+      </h3>
+      <div class="t3_head table_head_container">
+        <div class="attribute">Sub-score category</div>
+        <div class="attribute">Client results</div>
+        <div class="attribute">Points assigned</div>
+      </div>
+      <div class="t3_body table_body_container">
+        <div class="attribute">Emergency department visits</div>
+        <div class="attribute">Two</div>
+        <div class="attribute">1 points</div>
+      </div>
+      <div class="t3_body table_body_container">
+        <div class="attribute">Housing stability</div>
+        <div class="attribute">Unstable</div>
+        <div class="attribute">5 points</div>
+      </div>
+      <div class="t3_body table_body_container">
+        <div class="attribute">Incarcerations</div>
+        <div class="attribute">None</div>
+        <div class="attribute">0 points</div>
+      </div>
+      <div class="t3_body table_body_container">
+        <div class="attribute">Chronic conditions</div>
+        <div class="attribute">None</div>
+        <div class="attribute">0 points</div>
+      </div>
+      <div class="t3_body table_body_container">
+        <div class="attribute">Clinician assessment</div>
+        <div class="attribute">High risk</div>
+        <div class="attribute">8 points</div>
+      </div>
+      <div class="t3_body table_body_container">
+        <div class="attribute">TOTAL SCORE</div>
+        <div class="attribute">--</div>
+        <div class="attribute">14 points</div>
+      </div>
+    </section>
+
+    <h2>Assigning level of care from GHS score</h2>
+    <p>
+      Client level of care will be assigned based on the quarterly GHS score.
+      See <a href="#t1">Table 1</a> and <a href="#t2">Table 2</a> for
+      assignments for adult and child benefits, respectively. This level
+      of care will indicate both the monthly base payment amount and the expected
+      monthly hours a client is to receive. This level of care
+      assignment will be used for the entire quarter.
+    </p>
+  </section>
+
+  <section class="main-section" id="sda">
+    <header>Service Delivery Adherence (SDA)</header>
+    <h2>Overview</h2>
+    <p>
+      A benefit’s expected level of care and payment amount will be based on
+      their PHS model score and level of care assignment for the quarter. Both
+      are summarized in Table 4. All monthly payments will be prorated by the
+      number of days the benefit was active during the month. For ease of
+      interpretability, payment amounts in Table 4 are shown per 30 days of
+      active benefit. This was done to estimate a ‘monthly’ payment.
+    </p>
+    <p>
+      In addition to using the PHS scoring model to determine a client’s tier
+      each quarter, monthly payment amounts will be adjusted based on an
+      agency’s performance in meeting prior service delivery targets for the
+      client. This adjustment is called service delivery adherence (SDA), and
+      will be described in more detail below.
+    </p>
+    <section id="t4" class="main-section">
+      <h3><strong>Table 4</strong>. Service hours expected and base payment
+        amounts per 30 days of active benefit.</h3>
+      <div class="table_head_container t4_head">
+        <div class="attribute">Benefit type</div>
+        <div class="attribute">Service Hours Expected</div>
+        <div class="attribute">Adult: base payment</div>
+        <div class="attribute">Child: base payment</div>
+      </div>
+      <div class="table_body_container t4_body">
+        <div class="attribute">Low</div>
+        <div class="attribute">1.5</div>
+        <div class="attribute">$197.42</div>
+        <div class="attribute">$216.90</div>
+      </div>
+      <div class="table_body_container t4_body">
+        <div class="attribute">Medium</div>
+        <div class="attribute">2.5</div>
+        <div class="attribute">$286.77</div>
+        <div class="attribute">$277.81</div>
+      </div>
+      <div class="table_body_container t4_body">
+        <div class="attribute">High</div>
+        <div class="attribute">7.0</div>
+        <div class="attribute">$845.67</div>
+        <div class="attribute">$1067.10</div>
+      </div>
+    </section>
+    <section class="main-section" id="SDA">
+    <h2>Calculation of SDA</h2>
+    <p>
+      Active benefits will receive a service delivery adherence (SDA)
+      calculation once each quarter, if possible. SDA percentages are the
+      ratio of the amount of services a client received relative to the
+      amount requested for all clients at a certain benefit level during a
+      period. Or:
+    </p>
+    <p>[TO ADD: MATH EQUATIONS IN MATHJAX (can't use for FCC project)]</p>
+    <p>Where:</p>
+    <p>[ADD MATH]</p>
+    <p>
+      The SDA statistic for each quarter will be calculated from the
+      three-month period beginning four months before the current quarter began.
+      For example, Q1 SDA calculations will be based on utilization adherence
+      over the period September – November. The number of hours required for
+      a benefit will be based on the level of care a client was assigned during
+      the time of the SDA calculation. Thus, the expected number of service
+      hours for the SDA statistic may differ from a client’s expected service
+      hours for the current quarter. If a benefit had multiple PHS tiers during
+      an SDA calculation period, a weighted average will be calculated using the
+      following formula:
+    </p>
+    <p>[MATH]</p>
+    <p>
+      Examples of SDA calculations, including expected hours, prorated monthly
+      service hours, and adjustments to payment are provided in Appendix B. SDA
+      will not be calculated unless the client had 14 or more days of active
+      benefit during the SDA calculation period. A suspended benefit is considered
+      inactive. If SDA cannot be calculated for the most recent quarter, results
+      from a prior SDA calculation will be used. Rules for using prior quarter
+      SDA statistics are highlighted below:
+    </p>
+    <ul>
+      <li>New authorizations (no prior stratification score)</li>
+        <ol>
+          <li>If an agency served the same client within 90 days of the new
+            benefit beginning, the most recent SDA statistic from this benefit
+            will be used.</li>
+          <li>If the agency has not served the same client with the same type of
+            benefit (MH or SUD) within the 90 days, SDA is not available for the
+            client.</li>
+        </ol>
+      <li>Authorizations which have been previously stratified</li>
+        <ol>
+          <li>If SDA can be calculated for the quarter, payment adjustment will
+            be based on that SDA.</li>
+          <li>If SDA cannot be calculated for the quarter, the most recently
+            available SDA calculation will be used for the client. Results from
+            a prior authorization may be used if an agency served the same
+            client under the same type of benefit (MH or SUD) within 90 days of
+            the current benefit start date.</li>
+        </ol>
+      </ul>
+    </p>
+  </section>
+
+
+  </main>
+</html>
+{% endblock %}

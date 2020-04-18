@@ -1,0 +1,89 @@
+/************ Change base template *************/
+.main {padding-left: 2em;}
+/************ Global content ******************/
+header {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+h1 {font-weight: bold;}
+h2 {
+  font-size: 2.0em;
+  font-style: italic;
+}
+h3 {
+  font-size: 1.8em;
+}
+
+section {
+  margin: 0em 0em 2em 0em;
+  max-width: 150em;
+}
+p, li {
+  font-size: 1.5em;
+}
+
+
+/************ Global table ******************/
+.table_head_container {
+  background-color: blanchedalmond;
+  display: grid;
+  text-align: center;
+  max-width: 150em;
+}
+.table_body_container {
+  display: grid;
+  max-width: 150em;
+}
+.attribute {
+  border: 1px solid black;
+  padding-left: 3px;
+  font-size: 1.5em;
+}
+
+/**************************** Table 1 ******************/
+.t1_head_row1 {
+  grid-template-columns: 2fr 4fr;
+  font-weight: bold;
+}
+.t1_head_row2 {
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  background-color: white !important;
+  text-decoration: underline;
+}
+.t1_body {
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+}
+/**************************** Table 2 ******************/
+.t2_head_row1 {
+  grid-template-columns: 2fr 4fr;
+  font-weight: bold;
+}
+.t2_head_row2 {
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  background-color: white !important;
+  text-decoration: underline;
+}
+.t2_body {
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+}
+
+/**************************** Table 3 ******************/
+.t3_head {
+  grid-template-columns: 1fr 1fr 1fr;
+  font-weight: bold;
+}
+.t3_body {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.t3_body:last-child {
+  border-top: 1px solid black;
+  font-weight: bold;
+}
+/**************************** Table 4 ******************/
+.t4_head {
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  font-weight: bold;
+}
+.t4_body {
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}

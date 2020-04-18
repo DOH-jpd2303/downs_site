@@ -15,5 +15,5 @@ def projects_survey_page(request):
 def projects_product_page(request):
     return render(request, "projects/product.html")
 
-def projects_techdoc_page(request):
-    return render(request, "projects/techdoc.html")
+def projects_ghs_tech_doc_page(request):
+    return render(request, "projects/ghs_tech_doc.html")
